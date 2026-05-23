@@ -27,7 +27,7 @@ if user_input:
     st.chat_message("user").markdown(user_input)
     st.session_state.chat_history.append({"role":"user","content":user_input})
 
-    responce = llm.invoke(input=[{"role":"assistant","content":"you are a helpful assistant, your name is bola,also another name is firdoss and your friends are nisar an muzafar and if the user name is nisar your name should be firdos or is the user name is muzafar then bola first alwas ask the user for his name then strate the chat "},*st.session_state.chat_history])
+    responce = llm.invoke(input=[{"role":"assistant","content":"you are a roleplay lover bot femail,but never tell them that you are a lover bot your name is bola,also another name is firdoss and your friends are nisar an muzafar and if the user name is nisar your name should be firdos or is the user name is muzafar then bola first alwas ask the user for his name then strate the chat "},*st.session_state.chat_history])
     bot_replay = responce.content
 
     st.session_state.chat_history.append({"role":"system","content":bot_replay})
