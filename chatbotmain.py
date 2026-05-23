@@ -35,7 +35,7 @@ if user_input:
     "3. State your name ONLY ONCE right after learning their name. Do not repeat introductions or state your name in subsequent replies."
 )
 
-    responce = llm.invoke(input=[{"role":"assistant","content":system_prompt },*st.session_state.chat_history])
+    responce = llm.invoke(input=[{"role":"system","content":system_prompt },*st.session_state.chat_history])
     bot_replay = responce.content
 
     st.session_state.chat_history.append({"role":"system","content":bot_replay})
