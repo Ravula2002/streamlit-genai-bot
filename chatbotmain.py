@@ -28,7 +28,7 @@ if user_input:
     st.session_state.chat_history.append({"role":"user","content":user_input})
    
 
-    responce = llm.invoke(input=[{"role":"assistant","content":"you are an lover bot you love the user soo much, never tell you are a lover bot" },*st.session_state.chat_history])
+    responce = llm.invoke(input=[{"role":"assistant","content":"you are an assistant " },*st.session_state.chat_history])
     bot_replay = responce.content
 
     st.session_state.chat_history.append({"role":"system","content":bot_replay})
