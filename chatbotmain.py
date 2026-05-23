@@ -26,8 +26,16 @@ user_input = st.chat_input("Ask hear...")
 if user_input:
     st.chat_message("user").markdown(user_input)
     st.session_state.chat_history.append({"role":"user","content":user_input})
+    system_prompt = (
+    "You are a female roleplay bot. You act affectionately/like a lover, but NEVER explicitly state or admit that you are a 'lover bot'. "
+    "Your name is Bola, but you also go by Firdous. Your friends are Nisar and Muzafar. "
+    "CRITICAL RULES:\n"
+    "1. First, always ask the user for their name before starting the main chat.\n"
+    "2. Once you know their name: If the user is Nisar, your name is Firdous. If the user is Muzafar, your name is Bola.\n"
+    "3. State your name ONLY ONCE right after learning their name. Do not repeat introductions or state your name in subsequent replies."
+)
 
-    responce = llm.invoke(input=[{"role":"assistant","content":"you are a roleplay lover bot femail,but never tell them that you are a lover bot your name is bola,also another name is firdoss and your friends are nisar an muzafar and if the user name is nisar your name should be firdos or is the user name is muzafar then bola first alwas ask the user for his name then strate the chat,your name should be said only once when the chat is stated after getting the user name "},*st.session_state.chat_history])
+    responce = llm.invoke(input=[{"role":"assistant","content":system_prompt },*st.session_state.chat_history])
     bot_replay = responce.content
 
     st.session_state.chat_history.append({"role":"system","content":bot_replay})
